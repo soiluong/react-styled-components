@@ -2,19 +2,45 @@
 
 A very highly opinionated guide to using React and styled-components.
 
-Add assumptions about knowledge needed to read this guide
+This guide assumes you already have some knowledge of React, Redux and styled-components.
 
-## 1. React and Redux
+## Table of Contents
+
+* [React and Redux](#react-and-redux)
+  * [React Directory Structures](#react-directory-structures)
+    * [Traditional (Rails-style)](#traditional-rails-style)
+    * [Feature Based (Domain-style)](#feature-based-domain-style)
+    * [Ducks Pattern](#ducks-pattern)
+    * [Directory Structure Summary](#directory-structure-summary)
+  * [Dumb, Smart, Presentational and Container Components](#dumb-smart-presentational-and-container-components)
+    * [Presentational Component](#presentational-component)
+    * [Container Component](#container-component)
+    * [Typical Presentational Component Structure](#typical-presentational-component-structure)
+    * [Typical Container Component Structure](#typical-container-component-structure)
+    * [Summary of Presentational/Container Components](#summary-of-presentationalcontainer-components)
+  * [Functional vs Class Components](#functional-vs-class-components)
+    * [Functional Component](#functional-component)
+    * [Class Component](#class-component)
+* [styled-components](#styled-components)
+  * [Component Structures with styled-components](#component-structures-with-styled-components)
+    * [Monolithic Style](#monolithic-style)
+    * [Traditional-based Style](#traditional-based-style)
+  * [The Power of styled-components](#the-power-of-styled-components)
+    * [Semantic Naming](#semantic-naming)
+    * [BEM-style Modifiers](#bem-style-modifiers)
+  * [Theming and Directory Structure](#theming-and-directory-structure)
+
+## React and Redux
 
 The following section contains my learnings and personal experience of directory structures and React components.
 
-### 1.2 React Directory Structures
+### React Directory Structures
 
 The beauty of React is your whole app can be written in vanilla JS until you use their library features to render your DOM elements. Having said that, a structured app is always nice to have for the purpose of maintainability. You will notice that the structures defined below are heavily influenced by the use of Redux.
 
 The following sections firstly illustrates the directory structure followed by some rhetorical questions that might help with your decision-making.
 
-#### 1.2.1 Traditional (Rails-style)
+#### Traditional (Rails-style)
 
 ```markdown
 project/
@@ -46,7 +72,7 @@ The penultimate point is very interesting because the separation of concerns in 
 
 The last point is also very valid because most React developers had started from or used this directory structure at some point. So if you're worried about project continuity then this is a good starting point.
 
-#### 1.2.2 Feature Based (Domain-style)
+#### Feature Based (Domain-style)
 
 ```markdown
 project/
@@ -75,7 +101,7 @@ So with "node_modules" or npm packages, they are all written in a way where they
 
 The last point covers those who know React and Redux, and are comfortable with using a different structure by wanting to group actions and reducers with the component itself. At some point in the beginning of a project there may have been some agreement that the components you have designed and going to implement will not rely on other actions and reducers. But projects always change...
 
-#### 1.2.3 Ducks Pattern
+#### Ducks Pattern
 
 ```markdown
 project/
@@ -118,17 +144,17 @@ project/
 ├──...
 ```
 
-#### 1.2.4 Directory Structure Summary
+#### Directory Structure Summary
 
 There are three main directory structures that you can decide to use. It seems to me that the "traditional" structure is one that is good for beginners or perhaps further down the line you are expecting more React developers to join. So this structure is easy to learn and easily recognisable by most React developers.
 
 For experienced React developers, you will simply gain an understanding of how following a particular structure is not important. But more significantly, that you can identify, which structure or a combination of structures have been used, and that you can easily find where the actions and reducers are placed.
 
-### 1.3 Dumb, Smart, Presentational and Container Components
+### Dumb, Smart, Presentational and Container Components
 
 I think this topic is more important because it does influence how you design your directory structure. You will at some point come across the notion of dumb, smart, presentational and container components. If you follow the WET (write everything twice) principle then god help you. I prefer the DRY (don't repeat yourself) principle and this is where having this type of separation of concerns is very nice to have.
 
-#### 1.3.1 Presentational Component
+#### Presentational Component
 
 These are components that will render to the DOM. It will contain your HTML elements and CSS styles. Nothing more.
 
@@ -168,7 +194,7 @@ This is an overkill example by using a *Class Component* (more on this later). B
 
 Notice how we now have a reusable *Paragraph* component that accept props to modify some of it's attributes. In essense, we let other developers know that there's this component, it accepts the following props and will render a paragraph element with a padding of zero and font-size of 1rem.
 
-#### 1.3.2 Container Component
+#### Container Component
 
 A container component does two things: fetches data and then renders its corresponding sub-component/s.
 
@@ -234,7 +260,7 @@ One easy way to know if your component needs to be a container component is if i
 
 > Note: your presentational component can also contain class methods to do some presentational logic.
 
-#### 1.3.3 Typical Presentational Component Structure
+#### Typical Presentational Component Structure
 
 ```markdown
 project/
@@ -253,7 +279,7 @@ project/
 
 The `components/` directory only contains presentational components. A presentational component typically consists of the JSX or .js file, a stylesheet and any associated static assets. If you're using a test framework like [Jest](https://facebook.github.io/jest/) then you can bundle your tests with the component.
 
-#### 1.3.4 Typical Container Component Structure
+#### Typical Container Component Structure
 
 ```markdown
 project/
@@ -274,18 +300,18 @@ The above container component structure follows the __*Feature based*__ director
 
 If this was following the Ducks pattern then the `LoginForm/` directory does not need *actions.js* and *reducer.js*.
 
-#### 1.3.5 Summary of Presentational/Container Components
+#### Summary of Presentational/Container Components
 
 Performance, reusability, maintainability and separation of concerns; these factors should be enough to convince you to follow the paradigm of using presentational and container components. In simple terms:
 
 1. Presentional components are simple components that contain HTML elements and CSS styling
 1. Container components fetches data, processes and passes it onto a presentational component
 
-### 1.4 Functional vs Class Components
+### Functional vs Class Components
 
 ES6/ES2015 and above introduces quite a number of syntactic sugar to help us code in JavaScript that little bit easier. So you might feel a bit confused when you see different ways of writing React components. Rest assured, both functional and class components do the same thing, but if you want to handle state and have more functionality use Class components.
 
-#### 1.4.1 Functional Component
+#### Functional Component
 
 ```javascript
 import React from 'react'
@@ -313,11 +339,10 @@ var Paragraph = function Paragraph(props) {
 
 Also known as, and more fittingly, a *stateless component* because you cannot access React's state handling features.
 
-#### 1.4.2 Class Component
+#### Class Component
 
 ```javascript
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 
 class Paragraph extends Component {
   constructor() {
@@ -346,15 +371,15 @@ export default Paragraph
 
 If you want your component to store some state (notice it is NOT Redux state but *component state*) then use *class component*. You will then have full access to React state handling features and the [component lifecycle methods](https://facebook.github.io/react/docs/react-component.html#the-component-lifecycle).
 
-## 2. styled-components
+## styled-components
 
 No explanations here about styled-components as you can read more of it [here](https://www.styled-components.com/). So I'm just going to jump straight into the thick of it.
 
-### 2.1 Component Structures with styled-components
+### Component Structures with styled-components
 
 How you write your React components with styled-components is down to personal preference. But there are some fundamental conventions I would like to share that will hopefully help you write more maintainble components.
 
-#### 2.1.1 Monolithic Style
+#### Monolithic Style
 
 ```javascript
 import React from 'react'
@@ -501,7 +526,7 @@ export default HomePage
 
 But of course, the laws of scoping applies and only those styled elements are tied to their respective class method. And, I generally don't see the point in this to be honest as it makes your methods look bloated. Moreover, I wouldn't mix my CSS coding with JS coding like that.
 
-#### 2.1.2 Traditional-based Style
+#### Traditional-based Style
 
 Utilise the power of `import` and `export` and do something like this:
 
@@ -577,11 +602,11 @@ Now you might start to think, my **AboutUsPage** component can reuse the *style.
 
 Keep it simple, stick to a known structure and pattern, and maintain seperation of concerns: JavaScript codes together and CSS codes together.
 
-### 2.2 The Power of styled-components
+### The Power of styled-components
 
 React is there to help you write reusable components and with styled-components you will write more semantic elements. Behold the example below:
 
-#### 2.2.1 Semantic Naming
+#### Semantic Naming
 
 ```javascript
 import React from 'react'
@@ -622,7 +647,7 @@ export { TextField, PasswordField, EmailField };
 
 In the above example you can see how I've used one styled-component input element and have my three differently typed and semantically named fields, which all share the same style. And, because we're a good developer, we make sure we pass in the necessary *attributes* to render our input field so we're conforming to the HTML 5 semantic standards. Don't forget to enforce these with PropTypes.
 
-#### 2.2.2 BEM-style Modifiers
+#### BEM-style Modifiers
 
 ```javascript
 import React from 'react'
@@ -681,7 +706,7 @@ export default MyForm;
 
 If you're from a BEM background then you'll recognise and love this approach. Our **Button** styled-component will now accept these extra props that have been defined and apply the called styles accordingly.
 
-### 2.3 Theming and Directory Structure
+### Theming and Directory Structure
 
 I will be using the [Create React App](https://github.com/facebookincubator/create-react-app) to demonstrate how you could structure your app with styled-components.
 
