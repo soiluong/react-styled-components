@@ -210,7 +210,7 @@ class MyDiary extends Component {
     const { firstParagraph } = this.state
 
     return (
-      <Paragraph id="my-paragraph" class="MyDiary__first-entry">
+      <Paragraph id="my-paragraph" classname="MyDiary__first-entry">
         {firstParagraph}
       </Paragraph>
     )
