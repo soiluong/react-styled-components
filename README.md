@@ -848,7 +848,7 @@ Now in the words of the [styled-components bible](https://www.styled-components.
 
 > We do not encourage the use of this. Try to use it once per app at most, if you must, contained in a single file. This is an escape hatch. Only use it for the rare @font-face definition or body styling.
 
-Well I've done a cheeky one and defined a reset with *html* followed by the `box-sizing` attributes. You could define some other resets like `ul { list-style: none }`. As long as you're not defining *ID* or *Class* styles in this particular file.
+Well I've done a cheeky one and defined a reset with *html* followed by the `box-sizing` attributes. You could define some other resets like `ul { list-style: none }` and other primitive element styles. As long as you're not defining *ID* or *Class* styles in this particular file.
 
 > Note: you should be using some sort of web font loader to prevent the dreaded [FOUT](https://css-tricks.com/fout-foit-foft/) symptom.
 
