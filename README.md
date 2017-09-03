@@ -875,7 +875,7 @@ Now in the words of the [styled-components bible](https://www.styled-components.
 
 Well I've done a cheeky one and defined a reset with *html* followed by the `box-sizing` attributes. You could define some other resets like `ul { list-style: none }` and other primitive element styles. As long as you're not defining *ID* or *Class* styles in this particular file.
 
-> Note: you should be using some sort of web font loader to prevent the dreaded [FOUT](https://css-tricks.com/fout-foit-foft/) symptom.
+> Note: you should be using some sort of web font loader to prevent the dreaded [FOIT](https://css-tricks.com/fout-foit-foft/) symptom.
 
 And now, the **Button** component has access to the theme object due to the *ThemeProvider*. Additionally, it can `import` the theme variables directly if needed be.
 
