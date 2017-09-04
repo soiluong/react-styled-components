@@ -613,13 +613,10 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Input = styled.input.attrs({
-  id: props => props.id,
-  name: props => props.inputName,
-  placeholder: props => props.inputPlaceholder,
-  required: props => props.inputRequired,
-  size: props => props.inputSize
+  fontSize: props => props.myBigBox ? '24px' : '10px',
+  margin: props => props.myBigBox || '10px',
+  padding: props => props.myBigBox || '10px'
 })`
-  font-size: 1em;
   border: 2px solid red;
   border-radius: 3px;
 `
@@ -630,15 +627,39 @@ const Input = styled.input.attrs({
  */
 
 const TextField = props => (
-  <Input type="text" {...props} />
+  <Input 
+    type="text" 
+    id={props.id} 
+    name={props.name} 
+    placeholder={props.placeholder} 
+    size={props.size} 
+    required={props.required} 
+    myBigBox={props.myBigBox}
+  />
 )
 
 const PasswordField = props => (
-  <Input type="password" {...props} />
+  <Input 
+    type="password" 
+    id={props.id} 
+    name={props.name} 
+    placeholder={props.placeholder} 
+    size={props.size} 
+    required={props.required} 
+    myBigBox={props.myBigBox}
+  />
 )
 
 const EmailField = props => (
-  <Input type="email" {...props} />
+  <Input 
+    type="email" 
+    id={props.id} 
+    name={props.name} 
+    placeholder={props.placeholder} 
+    size={props.size} 
+    required={props.required} 
+    myBigBox={props.myBigBox}
+  />
 )
 
 // export beautiful semantic form inputs
